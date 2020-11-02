@@ -29,10 +29,7 @@ import org.jvnet.hudson.test.JenkinsRule;
 
 import javax.inject.Inject;
 import java.io.PrintStream;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static com.atlassian.jira.cloud.jenkins.common.response.JiraSendInfoResponse.Status.SUCCESS_DEPLOYMENT_ACCEPTED;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,6 +43,8 @@ public class JiraSendDeploymentInfoStepTest {
     private static final String ENVIRONMENT_ID = UUID.randomUUID().toString();
     private static final String ENVIRONMENT_NAME = "prod-east-1";
     private static final String ENVIRONMENT_TYPE = "production";
+    private static final List<String> CHANGE_SET =
+            Arrays.asList("DEV-1234 Some ticket", "DEV-4321 Another story");
     private static final String CLIENT_ID = UUID.randomUUID().toString();
     private static final String CREDENTIAL_ID = UUID.randomUUID().toString();
 
@@ -86,7 +85,8 @@ public class JiraSendDeploymentInfoStepTest {
     @Test
     public void configRoundTrip() throws Exception {
         final JiraSendDeploymentInfoStep deploymentInfoStep =
-                new JiraSendDeploymentInfoStep(ENVIRONMENT_ID, ENVIRONMENT_NAME, ENVIRONMENT_TYPE);
+                new JiraSendDeploymentInfoStep(
+                        ENVIRONMENT_ID, ENVIRONMENT_NAME, ENVIRONMENT_TYPE, CHANGE_SET);
         deploymentInfoStep.setSite(SITE);
         final JiraSendDeploymentInfoStep step =
                 new StepConfigTester(jenkinsRule).configRoundTrip(deploymentInfoStep);
@@ -108,6 +108,7 @@ public class JiraSendDeploymentInfoStepTest {
         r.put("site", SITE);
         r.put("environment", ENVIRONMENT_NAME);
         r.put("environmentType", ENVIRONMENT_TYPE);
+        r.put("changeSet", CHANGE_SET);
         final JiraSendDeploymentInfoStep step =
                 (JiraSendDeploymentInfoStep) descriptor.newInstance(r);
 

@@ -19,6 +19,9 @@
     <f:entry field="serviceIds" title="${%ServiceIds}">
         <f:textbox/>
     </f:entry>
+    <f:entry field="changeSet" title="${%ChangeSet}">
+        <f:textbox/>
+    </f:entry>
     <f:entry field="enableGating" title="${%EnableGating}">
         <f:checkbox/>
     </f:entry>

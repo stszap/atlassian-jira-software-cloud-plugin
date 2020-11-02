@@ -324,6 +324,7 @@ public class JiraDeploymentInfoSenderImplTest {
                 ENVIRONMENT_TYPE,
                 null,
                 Collections.emptySet(),
+                Collections.emptySet(),
                 Boolean.FALSE,
                 mockWorkflowRun());
     }
@@ -335,6 +336,7 @@ public class JiraDeploymentInfoSenderImplTest {
                 ENVIRONMENT_NAME,
                 ENVIRONMENT_TYPE,
                 state,
+                Collections.emptySet(),
                 Collections.emptySet(),
                 Boolean.FALSE,
                 mockWorkflowRun());
@@ -350,6 +352,7 @@ public class JiraDeploymentInfoSenderImplTest {
                 environmentName,
                 environmentType,
                 null,
+                Collections.emptySet(),
                 Collections.emptySet(),
                 Boolean.FALSE,
                 mockWorkflowRun());
