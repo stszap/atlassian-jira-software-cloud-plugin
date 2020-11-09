@@ -85,8 +85,7 @@ public class JiraSendDeploymentInfoStepTest {
     @Test
     public void configRoundTrip() throws Exception {
         final JiraSendDeploymentInfoStep deploymentInfoStep =
-                new JiraSendDeploymentInfoStep(
-                        ENVIRONMENT_ID, ENVIRONMENT_NAME, ENVIRONMENT_TYPE, CHANGE_SET);
+                new JiraSendDeploymentInfoStep(ENVIRONMENT_ID, ENVIRONMENT_NAME, ENVIRONMENT_TYPE);
         deploymentInfoStep.setSite(SITE);
         final JiraSendDeploymentInfoStep step =
                 new StepConfigTester(jenkinsRule).configRoundTrip(deploymentInfoStep);

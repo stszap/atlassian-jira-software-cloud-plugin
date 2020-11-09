@@ -282,6 +282,7 @@ public class JiraDeploymentInfoSenderImplTest {
                         ENVIRONMENT_TYPE,
                         "pending",
                         Collections.emptySet(),
+                        Collections.emptySet(),
                         Boolean.TRUE,
                         mockWorkflowRun());
 
